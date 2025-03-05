@@ -32,7 +32,7 @@ This template creates a clickable button (e.g., a red circle) that toggles the v
 
 ### 2.2 Write the Script
 Use the following template:
-```godot
+```gdscript
 extends Area2D
 
 # Reference to the image node (assign in the Inspector)
