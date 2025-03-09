@@ -4,7 +4,7 @@ extends Node3D  # Attach this script to the root node of your level/world
 ## Reference to the object scene (assign in the Inspector)
 @export var object_scene: PackedScene
 ## Number of objects to spawn
-@export var num_spawns: int = 1000
+@export var num_spawns: int = 20
 ## Min Area boundaries for random placement
 @export var spawn_area_min: Vector3 = Vector3(-5, -2.4, -2.5)
 ## Max Area boundaries for random placement
@@ -12,10 +12,15 @@ extends Node3D  # Attach this script to the root node of your level/world
 ## Scale of the spawned objects
 @export var object_scale: Vector3 = Vector3(0.2, 0.2, 0.1)
 @export var counter: RichTextLabel
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	counter.text = str(Global.player_data["score"])
+	if Global.num_spawns == 0:
+		print("game over!")
+		get_tree().paused = true
+		Global.block_esc()
+		$"../fin/GameOverMenu".visible = true
 func _ready():
+	Global.num_spawns = num_spawns
 	spawn_objects()  # Spawn the objects when the scene loads
 func spawn_objects():
 	for i in range(num_spawns):

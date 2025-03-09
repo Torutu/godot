@@ -9,6 +9,8 @@ func pause():
 	get_tree().paused = true
 	self.visible = true
 func testEsc():
+	if Global.is_esc_blocked():
+		return
 	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
 		pause()
 	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:

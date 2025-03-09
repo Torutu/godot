@@ -35,3 +35,17 @@ func load_game() -> void:
 func free_game():
 	player_data["silly_cat"] = 0
 	player_data["score"] = 0
+#-------------------------------------END GAME--------------------------------------------------
+# Variable to track whether the "Esc" key is blocked
+var block_esc_key := false
+# Function to block the "Esc" key
+func block_esc() -> void:
+	block_esc_key = true
+# Function to unblock the "Esc" key
+func unblock_esc() -> void:
+	block_esc_key = false
+# Function to check if the "Esc" key is blocked
+func is_esc_blocked() -> bool:
+	return block_esc_key
+#------------------------------------GAME RULES--------------------------------------------------
+var num_spawns: int

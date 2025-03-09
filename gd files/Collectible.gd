@@ -12,5 +12,6 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):  # Make sure your player is in the "player" group
 		# Increment the player's score
 		Global.player_data["score"] += 1
+		Global.num_spawns -= 1
 		print("Coin collected! Score:", Global.player_data["score"])
 		queue_free() #remove the node after collecting
